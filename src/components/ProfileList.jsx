@@ -3,7 +3,7 @@ import ProfileCard from "./ProfileCard";
 
 const ProfileList = ({ profiles }) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, paddingX: 2 }}>
       {profiles.length > 0 ? (
         profiles.map((profile) => <ProfileCard key={profile.id} user={profile} />)
       ) : (

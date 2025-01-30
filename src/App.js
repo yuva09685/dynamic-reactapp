@@ -33,13 +33,23 @@ const App = () => {
     >
       <Header />
       <Container sx={{ display: "flex", justifyContent: "space-between", mt: 4, flexGrow: 1 }}>
-        {/* Form Section */}
-        <Box sx={{ width: "35%", height: "fit-content" }}>
+        {/* Form Section (Slightly Wider) */}
+        <Box sx={{ width: "40%", height: "fit-content" }}>
           <ProfileForm fetchProfiles={fetchProfiles} />
         </Box>
 
-        {/* Scrollable Card List Section */}
-        <Box sx={{ width: "60%", maxHeight: "500px", overflowY: "auto", padding: "20px", background: "white", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)" }}>
+        {/* Scrollable Card List Section (Smaller in Width) */}
+        <Box
+          sx={{
+            width: "55%", // Reduced width
+            maxHeight: "500px",
+            overflowY: "auto",
+            padding: "20px",
+            background: "white",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          }}
+        >
           <ProfileList profiles={profiles} />
         </Box>
       </Container>
