@@ -11,7 +11,7 @@ const ProfileForm = ({ fetchProfiles }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://127.0.0.1:5000/api/profiles/userCreate", profile);
+    await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userCreate", profile);
     fetchProfiles();
     setProfile({ name: "", email: "", bio: "", location: "" }); // Clear form fields
   };
