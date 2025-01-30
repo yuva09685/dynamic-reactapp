@@ -11,7 +11,7 @@ const ProfileForm = ({ fetchProfiles }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("https://profile-app.onrender.com/api/profile", profile);
+    await axios.post("http://127.0.0.1:5000/api/profiles/userCreate", profile);
     fetchProfiles();
   };
 

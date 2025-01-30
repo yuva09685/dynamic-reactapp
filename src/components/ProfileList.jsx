@@ -8,10 +8,10 @@ const DEFAULT_PROFILES = [
   {
     id: 1,
     name: "John Doe",
-    email: "johndoe@example.com",
+    email: "yuvaraj09685@gmail.com",
     location: "New York, USA",
     bio: "Software Engineer | Tech Enthusiast",
-    avatar: "https://www.gravatar.com/avatar/?d=mp", // Default Gravatar avatar
+    avatar: "https://www.gravatar.com/avatar/14f3d95d91a9e59fa303ced1fee77c46?s=200&d=identicon", // Default Gravatar avatar
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const ProfileList = () => {
   // Fetch profiles from API
   const fetchProfiles = async () => {
     try {
-      const { data } = await axios.get("https://profile-app.onrender.com/api/profiles");
+      const { data } = await axios.post("http://127.0.0.1:5000/api/profiles/userList")
       if (data.length === 0) {
         setProfiles(DEFAULT_PROFILES); // Use default profiles if API returns an empty array
       } else {
