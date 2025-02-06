@@ -7,7 +7,9 @@ const UserCard = ({ user, setEdit, onDelete }) => {
   };
 
   const handleDelete = (e) => {
-    e.stopPropagation(); onDelete(user.id);
+    e.stopPropagation();
+    alert("Are you sure you want to delete this? This action is irreversible.");
+     onDelete(user.id);
   };
 
   return (
