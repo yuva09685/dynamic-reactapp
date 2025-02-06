@@ -8,8 +8,8 @@ const UserCard = ({ user, setEdit, onDelete }) => {
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    alert("Are you sure you want to delete this? This action is irreversible.");
-     onDelete(user.id);
+    const HardDelete = window.confirm("Are you sure you want to delete this? This action is irreversible.");
+    if (HardDelete) { onDelete(user.id); }
   };
 
   return (

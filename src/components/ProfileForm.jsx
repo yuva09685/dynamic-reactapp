@@ -10,23 +10,36 @@ const ProfileForm = ({ fetchProfiles, edit }) => {
     location: ""
   });
 
+  const [emailError, setEmailError] = useState("");
+
+
+
   useEffect(() => {
     if (edit) {
       setProfile({
         name: edit?.name || "",
-          email: edit?.email || "",
-            bio: edit?.bio || "",
-              location: edit?.location || ""
+        email: edit?.email || "",
+        bio: edit?.bio || "",
+        location: edit?.location || ""
       })
     }
   }, [edit])
 
+  const validateEmailConcise = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
+    if (e.target.name === "email") {
+      setEmailError(validateEmailConcise(e.target.value) ? "" : "Invalid email");
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (edit) {
       await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userUpdate", { ...profile, id: edit?.id });
     } else {
@@ -44,11 +57,11 @@ const ProfileForm = ({ fetchProfiles, edit }) => {
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField fullWidth label="Name" name="name" margin="normal" onChange={handleChange} value={profile.name} required />
-          <TextField fullWidth label="Email" name="email" type="email" margin="normal" onChange={handleChange} value={profile.email} required />
+          <TextField fullWidth label="Email" name="email" type="email" margin="normal" onChange={handleChange} value={profile.email} required helperText={emailError}  />
           <TextField fullWidth label="Location" name="location" margin="normal" onChange={handleChange} value={profile.location} required />
-          <TextField fullWidth label="Bio" name="bio" multiline rows={3} margin="normal" onChange={handleChange} value={profile.bio} required />
+          <TextField fullWidth label="Bio" name="bio" multiline rows={3} margin="normal" onChange={handleChange} value={profile.bio} required placeholder="Describe Your role"/>
           <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-          {edit ? 'save' : 'submit'}
+            {edit ? 'save' : 'submit'}
           </Button>
         </form>
       </CardContent>
