@@ -8,11 +8,13 @@ import Footer from "./components/footer";
 
 const App = () => {
   const [profiles, setProfiles] = useState([]);
+  const [edit, setEdit] = useState(null);
 
   const fetchProfiles = async () => {
     try {
       const { data } = await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userList");
       setProfiles(data);
+      setEdit(null);
     } catch (error) {
       console.error("Error fetching profiles:", error);
     }
@@ -21,6 +23,15 @@ const App = () => {
   useEffect(() => {
     fetchProfiles();
   }, []);
+
+  const onDelete = async (id) => {
+     try{
+      await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userDelete", {id:id});
+      fetchProfiles();
+     } catch(error){
+        console.log(error);
+     }
+  }
 
   return (
     <Box
@@ -35,7 +46,7 @@ const App = () => {
       <Container sx={{ display: "flex", justifyContent: "space-between", mt: 4, flexGrow: 1 }}>
         {/* Form Section (Slightly Wider) */}
         <Box sx={{ width: "40%", height: "fit-content" }}>
-          <ProfileForm fetchProfiles={fetchProfiles} />
+          <ProfileForm fetchProfiles={fetchProfiles} edit={edit} />
         </Box>
 
         {/* Scrollable Card List Section (Smaller in Width) */}
@@ -50,7 +61,7 @@ const App = () => {
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
           }}
         >
-          <ProfileList profiles={profiles} />
+          <ProfileList profiles={profiles} setEdit={setEdit} onDelete={onDelete}/>
         </Box>
       </Container>
       <Footer />
