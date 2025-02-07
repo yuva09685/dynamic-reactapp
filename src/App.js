@@ -46,7 +46,7 @@ const App = () => {
       <Container sx={{ display: "flex", justifyContent: "space-between", mt: 4, flexGrow: 1 }}>
         {/* Form Section (Slightly Wider) */}
         <Box sx={{ width: "40%", height: "fit-content" }}>
-          <ProfileForm fetchProfiles={fetchProfiles} edit={edit} />
+          <ProfileForm fetchProfiles={fetchProfiles} edit={edit} setEdit={setEdit}/>
         </Box>
 
         {/* Scrollable Card List Section (Smaller in Width) */}
@@ -56,8 +56,8 @@ const App = () => {
             maxHeight: "500px",
             overflowY: "auto",
             padding: "20px",
-            background: "white",
             borderRadius: "10px",
+            background: "rgba(255, 255, 255, 0.77)",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
           }}
         >

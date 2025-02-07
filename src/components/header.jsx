@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <AppBar position="static" sx={{ background: "#37474f" }}>
       <Toolbar>
-        <Typography variant="h6">Profile Collection App</Typography>
+        <Typography variant="h6">Home Page</Typography>
       </Toolbar>
     </AppBar>
   );
