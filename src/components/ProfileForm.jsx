@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TextField, Button, Card, CardContent, Typography } from "@mui/material";
 import axios from "axios";
+import { useSnackbar } from "./snackBarNotification";
 
 const ProfileForm = ({ fetchProfiles, edit }) => {
   const [profile, setProfile] = useState({
@@ -9,6 +10,8 @@ const ProfileForm = ({ fetchProfiles, edit }) => {
     bio: "",
     location: ""
   });
+
+  const showSnackbar = useSnackbar();
 
   const [emailError, setEmailError] = useState("");
 
@@ -42,8 +45,10 @@ const ProfileForm = ({ fetchProfiles, edit }) => {
 
     if (edit) {
       await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userUpdate", { ...profile, id: edit?.id });
+      showSnackbar("Profile updated successfully!", "success");
     } else {
       await axios.post("https://dynamic-app-backend.onrender.com/api/profiles/userCreate", profile);
+      showSnackbar("Profile created successfully!", "success");
     }
     fetchProfiles();
     setProfile({ name: "", email: "", bio: "", location: "" }); // Clear form fields
