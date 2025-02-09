@@ -54,30 +54,6 @@ const Header = () => {
             Backend Repo
           </Button>
           </Tooltip>
-          <Tooltip title="Download the User Manual here">
-          <Button
-            color="inherit"
-            onClick={() => {
-              const docUrl = "/User Documentation (1).pdf";
-              const link = document.createElement("a");
-              link.href = docUrl;
-              link.setAttribute("download", "User Documentation (1).pdf");
-              document.body.appendChild(link);
-              link.click();
-              link.remove();
-            }}
-            sx={{
-              fontWeight: "500",
-              textTransform: "none",
-              '&:hover': {
-                background: "rgba(255, 255, 255, 0.1)",
-                color: "#fff",
-              },
-            }}
-          >
-            Documentation
-          </Button>
-          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>
