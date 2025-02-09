@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, Tooltip  } from "@mui/material";
 import React from "react";
 
 const Header = () => {
@@ -20,6 +20,7 @@ const Header = () => {
         </Typography>
 
         <Box sx={{ display: "flex" }}>
+        <Tooltip title="Way to my Frontend Repository">
           <Button
             color="inherit"
             onClick={() => openLink("https://github.com/yuva09685/dynamic-reactapp")}
@@ -35,6 +36,8 @@ const Header = () => {
           >
             Frontend Repo
           </Button>
+          </Tooltip>
+          <Tooltip title="Way to my Backend Repository">
           <Button
             color="inherit"
             onClick={() => openLink("https://github.com/yuva09685/dynamic-app-backend")}
@@ -50,6 +53,8 @@ const Header = () => {
           >
             Backend Repo
           </Button>
+          </Tooltip>
+          <Tooltip title="Download the User Manual here">
           <Button
             color="inherit"
             onClick={() => {
@@ -72,6 +77,7 @@ const Header = () => {
           >
             Documentation
           </Button>
+          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>
