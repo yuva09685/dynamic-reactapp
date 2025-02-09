@@ -43,16 +43,16 @@ const App = () => {
       }}
     >
       <Header />
-      <Container sx={{ display: "flex", justifyContent: "space-between", mt: 4, flexGrow: 1 }}>
+      <Container sx={{ display: "flex", justifyContent: "space-between", mt: 4, flexGrow: 1, borderRadius: "15px" }}>
         {/* Form Section (Slightly Wider) */}
-        <Box sx={{ width: "40%", height: "fit-content" }}>
+        <Box sx={{ width: "35%", height: "fit-content" }}>
           <ProfileForm fetchProfiles={fetchProfiles} edit={edit} setEdit={setEdit}/>
         </Box>
 
         {/* Scrollable Card List Section (Smaller in Width) */}
         <Box
           sx={{
-            width: "55%", // Reduced width
+            width: "50%",
             maxHeight: "500px",
             overflowY: "auto",
             padding: "20px",

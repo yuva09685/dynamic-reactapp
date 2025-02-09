@@ -29,7 +29,10 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
   }, [edit])
 
   const validateEmailConcise = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    if (!email) {
+      return true;
+    }
+    const regex = /^[a-z0-9]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     return regex.test(email);
   };
 
@@ -47,7 +50,7 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (bioError) { // Prevent submit if bio error exists
+    if (bioError) { 
       return;
     }
 
@@ -59,16 +62,16 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
       showSnackbar("Profile created successfully!", "success");
     }
     fetchProfiles();
-    setProfile({ name: "", email: "", bio: "", location: "" }); // Clear form fields
+    setProfile({ name: "", email: "", bio: "", location: "" }); 
   };
 
   const handleCancel = () => {
     setProfile({ name: "", email: "", bio: "", location: "" });
-    setEdit(null); // Now you can use setEdit here!
+    setEdit(null); 
   };
 
-  const cities = [ // Array of Indian cities (you can expand this)
-    "Mumbai", "Delhi", "Bangalore", "Chennai", "Hyderabad", "Kolkata", "Ahmedabad", "Pune", "Surat", "Jaipur", "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal", "Patna", "Vadodara", "Ghaziabad", "Ludhiana", "Agra", // ... add more cities
+  const cities = [ 
+    "Mumbai", "Delhi", "Bangalore", "Chennai", "Hyderabad", "Kolkata", "Ahmedabad", "Pune", "Surat", "Jaipur", "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal", "Patna", "Vadodara", "Ghaziabad", "Ludhiana", "Agra", 
   ];
 
   return (
@@ -79,7 +82,7 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField fullWidth label="Name" name="name" margin="normal" onChange={handleChange} value={profile.name} required />
-          <TextField fullWidth label="Email" name="email" type="email" margin="normal" onChange={handleChange} value={profile.email} required helperText={emailError} />
+          <TextField fullWidth label="Email" name="email" type="email" margin="normal" onChange={handleChange} value={profile.email} required helperText={emailError} error={!!emailError} />
           <FormControl fullWidth margin="normal" required>
             <InputLabel id="location-label">Location</InputLabel>
             <Select
@@ -92,7 +95,7 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
               MenuProps={{
                 PaperProps: {
                   style: {
-                    maxHeight: 200, // Set a maximum height for the dropdown
+                    maxHeight: 200, 
                   },
                 },
               }}
@@ -109,7 +112,7 @@ const ProfileForm = ({ fetchProfiles, edit, setEdit }) => {
             <Button type="submit" variant="contained" color="primary">
               {edit ? 'save' : 'submit'}
             </Button>
-            <Button variant="contained" color="success" sx={{ml:3}} onClick={handleCancel}>
+            <Button variant="contained" color="success" sx={{ ml: 3 }} onClick={handleCancel}>
               Cancel
             </Button>
           </Box>
