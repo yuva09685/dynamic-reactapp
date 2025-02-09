@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dynamic-reactapp/static/css/main.e6c13ad2.css",
-    "main.js": "/dynamic-reactapp/static/js/main.d7f29325.js",
+    "main.js": "/dynamic-reactapp/static/js/main.84e77696.js",
     "index.html": "/dynamic-reactapp/index.html",
     "main.e6c13ad2.css.map": "/dynamic-reactapp/static/css/main.e6c13ad2.css.map",
-    "main.d7f29325.js.map": "/dynamic-reactapp/static/js/main.d7f29325.js.map"
+    "main.84e77696.js.map": "/dynamic-reactapp/static/js/main.84e77696.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.d7f29325.js"
+    "static/js/main.84e77696.js"
   ]
 }
